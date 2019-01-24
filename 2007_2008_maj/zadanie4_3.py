@@ -26,8 +26,6 @@ print('zad 3 - liczba glosow w 6 okregu',
       '; '.join(['{0}: {1}'.format(a, b) for (a, b) in zip(['A', 'B', 'C', 'D', 'E', 'F'], glosy6)]), file=wynik)
 
 
-
-
 def wszystkieMandaty():
     suma = [0, 0, 0, 0, 0, 0]
     for glosy, limitMandatow in zip(wszystkieGlosy, mandatyWOkregu):
@@ -35,7 +33,7 @@ def wszystkieMandaty():
         suma = [a + b for a, b in zip(suma, mandaty)]
 
     print('zad 4 - suma glosow we wszystkich okregach',
-          '; '.join(['{0}: {1}'.format(a, b) for (a, b) in zip(['A', 'B', 'C', 'D', 'E', 'F'], suma)]), file = wynik)
+          '; '.join(['{0}: {1}'.format(a, b) for (a, b) in zip(['A', 'B', 'C', 'D', 'E', 'F'], suma)]), file=wynik)
 
 
 wszystkieMandaty()
