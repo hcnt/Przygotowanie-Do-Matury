@@ -1,0 +1,2 @@
+zad 3 - liczba glosow w 6 okregu A: 9; B: 1; C: 4; D: 4; E: 4; F: 2
+zad 4 - suma glosow we wszystkich okregach A: 88; B: 53; C: 50; D: 69; E: 62; F: 28
