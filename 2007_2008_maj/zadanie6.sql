@@ -2,6 +2,10 @@ select count(distinct osoby.imie) from osoby
 join auta on auta.pesel=osoby.pesel
 join wypadki on wypadki.numer_rejstracyjny = auta.numer_rejestracyjny
 
+select count(distinct osoby.imie) from osoby, auta, wypadki 
+where auta.pesel=osoby.pesel and wypadki.numer_rejstracyjny = auta.numer_rejestracyjny
+
+
 select auta.numer_rejestracyjny,osoby.imię,osoby.nazwisko,wypadki.wysokosc_straty from osoby
 join auta on auta.pesel=osoby.pesel
 join wypadki on wypadki.numer_rejestracyjny = auta.numer_rejestracyjny
