@@ -1,0 +1,24 @@
+a)
+samica	508
+samiec	492
+b)
+o053	Edyta	Antczak	9
+o040	Dagmara	Bielawska	9
+o104	Kamila	Bugajno	9
+o173	Pawel	Gabowski	9
+o057	Eugeniusz	Jaworski	9
+o101	Kacper	Kaliszewski	10
+o144	Marcin	Kowal	9
+o185	Ryszard	Kowalski	9
+o142	Marcin	Kwiatkowski	9
+o044	Danuta	Szargawinska	9
+o021	Anna	Szczupak	9
+o118	Krystyna	Tobera	15
+o180	Rafal	Wroclawski	11
+o145	Maria	Wysocka	12
+
+c)
+Krystyna	Tobera	41
+
+d)
+145

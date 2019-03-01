@@ -1,0 +1,10 @@
+a) 271
+
+c)
+
+wartosc poczatkowa	Ilosc 12 kwietnia
+10000	12038
+7000	11899
+4000	11754
+
+
