@@ -40,3 +40,4 @@ def zad6c(dane, wyniki):
 
 
 main()
+
