@@ -8,7 +8,7 @@ def get_2_najmniejsze_argumenty(slownik):
     slownikKopia.pop(min1)
     min2 = min(slownikKopia, key=slownikKopia.get)
     wartosc2 = slownikKopia.get(min2)
-    return (min2, min1), wartosc1 + wartosc2
+    return (min1, min2), wartosc1 + wartosc2
 
 
 def dodajDoWszystkichElementow(tablica, slownik, znak):
@@ -19,7 +19,7 @@ def dodajDoWszystkichElementow(tablica, slownik, znak):
             dodajDoWszystkichElementow(x, slownik, znak)
 
 
-def wypelnijSlownik(drzewo,slownik):
+def wypelnijSlownik(drzewo, slownik):
     for i, x in enumerate(drzewo):
         if type(x) == str:
             slownik[x] += str(i)
@@ -27,12 +27,19 @@ def wypelnijSlownik(drzewo,slownik):
             dodajDoWszystkichElementow(x, slownik, str(i))
             wypelnijSlownik(x, slownik)
 
-def utworz_drzewo(probka):
+
+def utworzSlownikCzestosciWystepowaniaLiter(probka):
     ilosci_liter = Counter(probka)
     prawdopodobienstwa = {}
     for a in ilosci_liter:
         prawdopodobienstwa[a] = ilosci_liter.get(a) / len(probka)
-    print(dict(prawdopodobienstwa))
+    return dict(prawdopodobienstwa)
+
+
+def utworz_drzewo(probka):
+    ilosci_liter = Counter(probka)
+    prawdopodobienstwa = utworzSlownikCzestosciWystepowaniaLiter(probka)
+    print(prawdopodobienstwa)
     for i in range(len(list(prawdopodobienstwa.keys())) - 1):
         wezel, suma_prawdop = get_2_najmniejsze_argumenty(prawdopodobienstwa)
         prawdopodobienstwa.pop(wezel[0])
@@ -60,7 +67,9 @@ def dekoduj_H(napis, drzewo):
     return napis_zdekodowany
 
 
-drzewo, slownikLiter = utworz_drzewo('PIEEES')
-zakodowany_pies = koduj_H('PIEEES', slownikLiter)
-print(zakodowany_pies)
-print(dekoduj_H(zakodowany_pies, drzewo))
+text = 'A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED'
+drzewo, slownikLiter = utworz_drzewo(text)
+print(drzewo)
+zakodowany_tekst = koduj_H(text, slownikLiter)
+print(zakodowany_tekst)
+# print(dekoduj_H(zakodowany_tekst, drzewo))
