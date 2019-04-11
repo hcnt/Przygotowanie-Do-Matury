@@ -1,22 +1,19 @@
-import pprint
+from pprint import pprint
 from copy import deepcopy
 
 
 def main():
     a, b = 5, 5
     x = [[0 for i in range(a)] for j in range(b)]
-    x[2][2] = 1
-    x[2][3] = 1
-    # pprint.pprint(x)
-    gol(x,4)
+    gol(x, 4)
 
 
 def gol(tab, steps):
-    pprint.pprint(tab)
+    pprint(tab)
     for i in range(steps):
         tab = golStep(tab)
         print()
-        pprint.pprint(tab)
+        pprint(tab)
 
 
 def golStep(tab):
@@ -36,7 +33,8 @@ def determineCellState(tab, a, b):
                     neighbours.append(tab[i][j])
             except IndexError:
                 pass
-    if sum(neighbours) == 2 or sum(neighbours) == 3:
+    if (tab[a][b] == 1 and (sum(neighbours) == 2 or sum(neighbours) == 3)) or \
+       (tab[a][b] == 0 and sum(neighbours) == 3):
         return 1
     else:
         return 0
