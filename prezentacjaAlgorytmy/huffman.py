@@ -1,4 +1,5 @@
 from collections import Counter
+from heapq import nsmallest
 
 
 def get_2_najmniejsze_argumenty(slownik):
@@ -11,12 +12,12 @@ def get_2_najmniejsze_argumenty(slownik):
     return (min1, min2), wartosc1 + wartosc2
 
 
-def dodajDoWszystkichElementow(tablica, slownik, znak):
+def dodajZnakDoNapisowWSlownikuZawartychWTablicy(znak, slownik, tablica):
     for x in tablica:
         if type(x) == str:
             slownik[x] += znak
         else:
-            dodajDoWszystkichElementow(x, slownik, znak)
+            dodajZnakDoNapisowWSlownikuZawartychWTablicy(znak, slownik, x)
 
 
 def wypelnijSlownik(drzewo, slownik):
@@ -24,29 +25,19 @@ def wypelnijSlownik(drzewo, slownik):
         if type(x) == str:
             slownik[x] += str(i)
         elif type(x) == tuple:
-            dodajDoWszystkichElementow(x, slownik, str(i))
+            dodajZnakDoNapisowWSlownikuZawartychWTablicy(str(i), slownik, x)
             wypelnijSlownik(x, slownik)
 
 
-def utworzSlownikCzestosciWystepowaniaLiter(probka):
-    ilosci_liter = Counter(probka)
-    prawdopodobienstwa = {}
-    for a in ilosci_liter:
-        prawdopodobienstwa[a] = ilosci_liter.get(a) / len(probka)
-    return dict(prawdopodobienstwa)
-
-
 def utworz_drzewo(probka):
-    ilosci_liter = Counter(probka)
-    prawdopodobienstwa = utworzSlownikCzestosciWystepowaniaLiter(probka)
+    prawdopodobienstwa = dict(Counter(probka))
+    slownik = {x: '' for x in prawdopodobienstwa}
     print(prawdopodobienstwa)
-    for i in range(len(list(prawdopodobienstwa.keys())) - 1):
+    for i in range(len(prawdopodobienstwa) - 1):
         wezel, suma_prawdop = get_2_najmniejsze_argumenty(prawdopodobienstwa)
         prawdopodobienstwa.pop(wezel[0])
         prawdopodobienstwa.pop(wezel[1])
         prawdopodobienstwa[wezel] = suma_prawdop
-    litery = list(ilosci_liter.keys())
-    slownik = {x: '' for x in litery}
     drzewo = list(prawdopodobienstwa.keys())[0]
     wypelnijSlownik(drzewo, slownik)
     return drzewo, slownik
@@ -67,9 +58,21 @@ def dekoduj_H(napis, drzewo):
     return napis_zdekodowany
 
 
-text = 'A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED'
+# text = 'A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED'
+text = 'PPIIES'
 drzewo, slownikLiter = utworz_drzewo(text)
 print(drzewo)
 zakodowany_tekst = koduj_H(text, slownikLiter)
 print(zakodowany_tekst)
 # print(dekoduj_H(zakodowany_tekst, drzewo))
+
+if 2 > 5:
+    print("XD")
+else:
+    print("|XDDDDD")
+
+# print("XD") if 2 < 5 else print("XDDD")
+
+# xD = {'P': 10, 'D': 5, 'J': 15, 'M': 2}
+# xDD = {a: xD[a] for a in nsmallest(2, xD, key=xD.get)}
+# print(xDD)
