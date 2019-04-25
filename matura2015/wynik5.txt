@@ -1,0 +1,11 @@
+zad5.1
+A,33929579
+B,41736619
+D,36530387
+C,57649017
+zad5.2
+A 3
+B 4
+D 4
+C 8
+liczba mieszkancow edulandii 2025: 113354970
